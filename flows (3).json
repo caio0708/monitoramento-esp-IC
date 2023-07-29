@@ -1,0 +1,364 @@
+[
+    {
+        "id": "ca19cdc5aabe00c8",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "1b44af31ad64413b",
+        "type": "mqtt in",
+        "z": "ca19cdc5aabe00c8",
+        "name": "Reed",
+        "topic": "esp32/output",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "e469cb0b2a25c91a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 60,
+        "wires": [
+            [
+                "445144a2e2165070",
+                "7ed9cfe35bb637ac",
+                "4bd0a2d79719b51a"
+            ]
+        ]
+    },
+    {
+        "id": "4bd0a2d79719b51a",
+        "type": "debug",
+        "z": "ca19cdc5aabe00c8",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "445144a2e2165070",
+        "type": "switch",
+        "z": "ca19cdc5aabe00c8",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "LED: 0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "LED: 1",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 330,
+        "y": 100,
+        "wires": [
+            [
+                "e2a27fa22bd4a24a"
+            ],
+            [
+                "e2a27fa22bd4a24a"
+            ]
+        ]
+    },
+    {
+        "id": "e2a27fa22bd4a24a",
+        "type": "ui_led",
+        "z": "ca19cdc5aabe00c8",
+        "order": 1,
+        "group": "ec66047c1c9b8803",
+        "width": "6",
+        "height": "6",
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#04ff00",
+                "value": "LED: 1",
+                "valueType": "str"
+            },
+            {
+                "color": "#ffffff",
+                "value": "LED: 0",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 530,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ad76206bc80cefea",
+        "type": "mqtt in",
+        "z": "ca19cdc5aabe00c8",
+        "name": "",
+        "topic": "esp32/temp",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "e469cb0b2a25c91a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 280,
+        "wires": [
+            [
+                "5c6cc133a4f86b04",
+                "4ee2e0c6db3e6517",
+                "4b9ba6a8530617f5"
+            ]
+        ]
+    },
+    {
+        "id": "5c6cc133a4f86b04",
+        "type": "ui_gauge",
+        "z": "ca19cdc5aabe00c8",
+        "name": "",
+        "group": "ec66047c1c9b8803",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": "-20",
+        "max": "60",
+        "colors": [
+            "#00fffb",
+            "#1bee5a",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 350,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "4b9ba6a8530617f5",
+        "type": "debug",
+        "z": "ca19cdc5aabe00c8",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "e2af88a3e069231f",
+        "type": "mqtt in",
+        "z": "ca19cdc5aabe00c8",
+        "name": "",
+        "topic": "esp32/pot",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "e469cb0b2a25c91a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 440,
+        "wires": [
+            [
+                "185c55cbd6765137",
+                "1fe34e6dae8deaab"
+            ]
+        ]
+    },
+    {
+        "id": "185c55cbd6765137",
+        "type": "ui_gauge",
+        "z": "ca19cdc5aabe00c8",
+        "name": "",
+        "group": "ec66047c1c9b8803",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Potenciometro",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "4096",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 380,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "b414293d277470ea",
+        "type": "blynk-iot-out-write",
+        "z": "ca19cdc5aabe00c8",
+        "name": "",
+        "pin": "0",
+        "pinmode": 0,
+        "client": "504c31f9c9582c4b",
+        "x": 520,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "4ee2e0c6db3e6517",
+        "type": "blynk-iot-out-write",
+        "z": "ca19cdc5aabe00c8",
+        "name": "",
+        "pin": "1",
+        "pinmode": 0,
+        "client": "504c31f9c9582c4b",
+        "x": 360,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "1fe34e6dae8deaab",
+        "type": "blynk-iot-out-write",
+        "z": "ca19cdc5aabe00c8",
+        "name": "",
+        "pin": "2",
+        "pinmode": 0,
+        "client": "504c31f9c9582c4b",
+        "x": 380,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "7ed9cfe35bb637ac",
+        "type": "function",
+        "z": "ca19cdc5aabe00c8",
+        "name": "function 1",
+        "func": "// Recebe a string fornecida pelo nó \"switch\"\nvar inputString = msg.payload;\n\n// Verifica se a string é igual a uma determinada condição para converter para '1'\nif (inputString === \"LED: 1\") {\n    msg.payload = 1;\n} else {\n    // Se não for igual à string específica, converte para '0'\n    msg.payload = 0;\n}\n\n// Retorna a mensagem para continuar o fluxo\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 160,
+        "wires": [
+            [
+                "b414293d277470ea"
+            ]
+        ]
+    },
+    {
+        "id": "474269e438478904",
+        "type": "debug",
+        "z": "ca19cdc5aabe00c8",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "e469cb0b2a25c91a",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "mqtt.eclipseprojects.io",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "ec66047c1c9b8803",
+        "type": "ui_group",
+        "name": "IC",
+        "tab": "69ee1f6573b5ee5d",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "504c31f9c9582c4b",
+        "type": "blynk-iot-client",
+        "name": "",
+        "path": "blynk.cloud",
+        "key": "9NHjHUBEYNeT9doGqX2H2ZOcLr-nJIHp",
+        "tmpl": "",
+        "dbg_all": false,
+        "dbg_log": false,
+        "dbg_prop": false,
+        "dbg_sync": false,
+        "dbg_low": false,
+        "dbg_pins": "",
+        "multi_cmd": false,
+        "enabled": true
+    },
+    {
+        "id": "69ee1f6573b5ee5d",
+        "type": "ui_tab",
+        "name": "ESP32",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
